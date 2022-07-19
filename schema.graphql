@@ -22,6 +22,12 @@ type Project {
   createdBy: User
 }
 
+input InputTask {
+  name: String!
+  project: ID!
+  assignedTo: ID!
+}
+
 type Task {
   id: ID
   name: String
@@ -33,10 +39,11 @@ type Task {
 type Mutation {
   login(username: String!, password: String!): JSON
   signin(signinInput: UserInput): User
-  logout(token:String!): Boolean
+  logout(token: String!): Boolean
   createProject(name: String!): Project
-  updateProject(id:ID!, name: String!): Project
-  createTask(name: String!, project: String!, assignedTo: ID!): Task
+  updateProject(id: ID!, name: String!): Project
+  createTask(name: String!, project: ID!, assignedTo: ID!): Task
+  updateTask(id: ID, inputTask: InputTask): Task
 }
 
 type Query {

@@ -5,5 +5,5 @@ module.exports = {
   createProject: require("./createProject"),
   updateProject: require("./updateProject"),
   createTask: require("./createTask"),
-  // updateTask: require("./updateTask"),
+  updateTask: require("./updateTask"),
 };
