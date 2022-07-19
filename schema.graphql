@@ -1,0 +1,47 @@
+scalar JSON
+
+input UserInput {
+  name: String!
+  username: String!
+  password: String!
+  email: String!
+  phone: String!
+}
+
+type User {
+  id: ID
+  name: String
+  username: String
+  email: String
+  phone: String
+}
+
+type Project {
+  id: ID
+  name: String
+  createdBy: User
+}
+
+type Task {
+  id: ID
+  name: String
+  project: Project
+  assignedTo: User
+  createdBy: User
+}
+
+type Mutation {
+  login(username: String!, password: String!): JSON
+  signin(signinInput: UserInput): User
+  logout(token:String!): Boolean
+  createProject(name: String!): Project
+  updateProject(id:ID!, name: String!): Project
+  createTask(name: String!, project: String!, assignedTo: ID!): Task
+}
+
+type Query {
+  getProject(id: ID): Project
+  getProjects: [Project]
+  getTask(id: ID): Task
+  getTasks(project: ID): [Task]
+}
